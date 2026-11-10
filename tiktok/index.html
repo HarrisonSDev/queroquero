@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex"><title>Retorno do login TikTok — Quero Quero Promoções</title><style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:760px;margin:40px auto;padding:0 20px;color:#2a1a14;background:#fdf3ea;line-height:1.6}
+h1{color:#c3131e}h2{color:#7a1018;margin-top:28px}a{color:#c3131e}footer{margin-top:40px;font-size:.9em;color:#7a5a4a}
+.box{background:#fff;border-radius:14px;padding:18px 22px;box-shadow:0 2px 8px #0001}code{word-break:break-all}</style></head><body>
+<h1>🐦 Autorização do TikTok</h1>
+<div class="box" id="ok" hidden><p><b>Pronto!</b> Agora copie o endereço completo abaixo e cole no terminal do servidor, no comando <code>tiktok_auth.py --codigo</code>.</p>
+<p><button id="copiar">Copiar endereço</button> <span id="copiado"></span></p><p><code id="url"></code></p>
+<p>Este código vale poucos minutos e só funciona uma vez. Não compartilhe.</p></div>
+<div class="box" id="erro" hidden><p><b>A autorização não foi concluída.</b> <span id="msg"></span></p><p>Gere um link novo no servidor e tente de novo.</p></div>
+<div class="box" id="nada" hidden><p>Esta página recebe o retorno do login do TikTok da ferramenta interna da Quero Quero Promoções.</p></div>
+<script>
+(function(){var q=new URLSearchParams(location.search),u=location.href;
+if(q.get('code')){document.getElementById('ok').hidden=false;document.getElementById('url').textContent=u;
+document.getElementById('copiar').onclick=function(){navigator.clipboard.writeText(u).then(function(){document.getElementById('copiado').textContent='copiado ✓';});};}
+else if(q.get('error')){document.getElementById('erro').hidden=false;document.getElementById('msg').textContent=(q.get('error_description')||q.get('error'));}
+else{document.getElementById('nada').hidden=false;}})();
+</script></body></html>
